@@ -22,6 +22,6 @@ public class PaymentService {
 
     public String fetchPaymentStatus(){
         //now its random but this api call happens from 3rd party payment gateway(paypal/phonepe/gpay)
-        return new Random().nextBoolean()?"sucess":"failure";
+        return new Random().nextBoolean()?"success":"failure";
     }
 }

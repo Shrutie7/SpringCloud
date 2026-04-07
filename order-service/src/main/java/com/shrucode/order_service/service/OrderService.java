@@ -33,7 +33,7 @@ public class OrderService {
         //rest call(post call to payment api use RestTemplate connect 2 microservice make bean)
         //postForObject --> 3params --> url,request,response type class
 
-        Payment payment1 = restTemplate.postForObject("http://localhost:9191/payment/savePayent", payment, Payment.class);
+        Payment payment1 = restTemplate.postForObject("http://PAYMENT-SERVICE/payment/savePayment", payment, Payment.class);
 
         response = payment1.getPaymentStatus().equals("success")? "Payment processed and order completed sucessfully":"Payment failed and order added to cart";
 
