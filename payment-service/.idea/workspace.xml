@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="747a0623-881b-4be0-8476-70aa46fe7d6f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../gateway/src/main/java/com/shrucode/gateway/FallbackController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gateway/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../gateway/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/controller/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/repository/PaymentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/repository/PaymentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/service/PaymentService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

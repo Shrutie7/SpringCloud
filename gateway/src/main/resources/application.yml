@@ -59,8 +59,29 @@ logging:
   level:
     org.springframework.cloud.gateway: TRACE
 
+#exposes actuator endpoints like health and circuit breaker status so we can monitor application behavior in bruno/browser.
 management:
   endpoints:
     web:
       exposure:
         include: health,info,circuitbreakers
+
+#giving timeout of 5 s if request is not giving anything in 5s redirect to fallback
+
+resilience4j:
+  timelimiter:
+    instances:
+      orderServiceCB:
+        timeoutDuration: 5s
+      paymentServiceCB:
+        timeoutDuration: 5s
+
+
+#Request → Gateway → Order Service
+#                 ↓ (no response for 5 sec)
+#         TimeLimiter triggers ⏱️
+#                 ↓
+#         CircuitBreaker fallback
+
+  #Circuit breaker at gateway handles external failures,
+  #but for inter-service communication we must also implement circuit breaker at service level.
