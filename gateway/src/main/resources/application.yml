@@ -23,6 +23,28 @@ spring:
   application:
     name: GATEWAY-SERVICE
 
+  cloud:
+    gateway:
+      routes:
+        - id: order-service # as a list
+          uri: lb://ORDER-SERVICE #loadbalancer service name
+          predicates:
+            - Path=/order/** #url pattern any path starting with/order will redirect to order service if failure send to orderFallBack which is configured in FallBackController
+          filters:
+          - name: CircuitBreaker
+            args:
+              name: orderServiceCB
+              fallbackUri: forward:/orderFallBack
+
+        - id: payment-service
+          uri: lb://PAYMENT-SERVICE
+          predicates:
+              - Path=/payment/** #url pattern any path starting with/payment will redirect to payment service if failure send to paymentFallBack which is configured in FallBackController
+          filters:
+              - name: CircuitBreaker
+                args:
+                  name: paymentServiceCB
+                  fallbackUri: forward:/paymentFallBack
 eureka:
   client:
     register-with-eureka: true
@@ -32,3 +54,13 @@ eureka:
 
   instance:
     hostname: localhost
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,circuitbreakers

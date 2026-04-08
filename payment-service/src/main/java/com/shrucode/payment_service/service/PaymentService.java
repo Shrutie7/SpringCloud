@@ -5,6 +5,7 @@ import com.shrucode.payment_service.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -23,5 +24,9 @@ public class PaymentService {
     public String fetchPaymentStatus(){
         //now its random but this api call happens from 3rd party payment gateway(paypal/phonepe/gpay)
         return new Random().nextBoolean()?"success":"failure";
+    }
+
+    public List<Payment> findPaymentHistoryByOrderId(int orderId){
+        return paymentRepository.findByOrderId(orderId);
     }
 }
