@@ -3,6 +3,7 @@ package com.shrucode.order_service;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,6 +11,8 @@ import org.springframework.web.client.RestTemplate;
 //In Spring Boot 3 + Spring Cloud 2023,
 //you DO NOT need @EnableEurekaClient anymore -Eureka client will auto-register automatically
 // in localhost:8761 you will see order-service added as instance registered in eureka
+
+@EnableFeignClients
 public class OrderServiceApplication {
 
 	@Bean

@@ -23,5 +23,6 @@ public class Order {
     private double price;
     private LocalDateTime createdAt;
     private String status;
+    private int productId;
 
 }
