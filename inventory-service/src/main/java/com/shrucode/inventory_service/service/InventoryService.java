@@ -24,6 +24,7 @@ public class InventoryService {
         InventoryReduceResponse inventoryReduceResponse = new InventoryReduceResponse();
 //        Inventory inventory = new Inventory(); // will create a new row if i create a new object of entity we need to update existing row
 
+        //use redis cache here for db call -- ttl...........
         Inventory byProductId = inventoryRepository.findByProductId(inventoryReduceRequest.getProductId());//db call ek bar krna pura object inventory ka yhi miljaiga
         if(byProductId==null ){
             inventoryReduceResponse.setMessage("Product Not found!");

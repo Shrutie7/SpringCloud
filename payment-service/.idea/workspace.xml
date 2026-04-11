@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="747a0623-881b-4be0-8476-70aa46fe7d6f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/common/Inventory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/common/InventoryFeignClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/common/InventoryReduceRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/common/InventoryReduceResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/common/InventoryStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/shrucode/inventory_service/service/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../inventory-service/src/main/java/com/shrucode/inventory_service/service/InventoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/OrderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/OrderServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/service/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
