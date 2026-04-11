@@ -1,4 +1,4 @@
-package com.shrucode.order_service.entity;
+package com.shrucode.inventory_service.entity;
 
 
 import jakarta.persistence.*;
@@ -9,19 +9,23 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "order_table")
+@Table(name = "inventory_table")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+public class Inventory {
 
-public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int orderId;
-    private String productName;
-    private int quantity;
-    private double price;
-    private LocalDateTime createdAt;
-    private String status;
+    private int id;
 
+    private int productId;
+
+    private String productName;
+
+    private int quantity;
+
+    private double price;
+
+    private LocalDateTime lastUpdated;
 }

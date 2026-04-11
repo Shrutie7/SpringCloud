@@ -45,6 +45,16 @@ spring:
                 args:
                   name: paymentServiceCB
                   fallbackUri: forward:/paymentFallBack
+
+        - id: inventory-service
+          uri: lb://INVENTORY-SERVICE
+          predicates:
+            - Path=/inventory/** #url pattern any path starting with/payment will redirect to payment service if failure send to paymentFallBack which is configured in FallBackController
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: inventoryServiceCB
+                fallbackUri: forward:/inventoryFallBack
 eureka:
   client:
     register-with-eureka: true
@@ -74,6 +84,8 @@ resilience4j:
       orderServiceCB:
         timeoutDuration: 5s
       paymentServiceCB:
+        timeoutDuration: 5s
+      inventoryServiceCB:
         timeoutDuration: 5s
 
 
