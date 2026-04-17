@@ -5,19 +5,28 @@ import com.shrucode.order_service.common.*;
 import com.shrucode.order_service.entity.Order;
 import com.shrucode.order_service.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
+@RefreshScope
 public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
     @Autowired
+    @Lazy
     private RestTemplate restTemplate;
 
     @Autowired
     private InventoryFeignClient inventoryFeignClient;
+
+
+    @Value("${microservice.payment-service.endpoints.endpoint.uri}")
+    private String ENDPOINT_URL;
 
 
     public TransactionResponse saveOrder(TransactionRequest transactionRequest) {
@@ -40,7 +49,7 @@ public class OrderService {
             //rest call(post call to payment api use RestTemplate connect 2 microservice make bean)
             //postForObject --> 3params --> url,request,response type class
 
-            Payment payment1 = restTemplate.postForObject("http://PAYMENT-SERVICE/payment/savePayment", payment, Payment.class);
+            Payment payment1 = restTemplate.postForObject(ENDPOINT_URL, payment, Payment.class);
 
             response = "success".equals(payment1 != null ? payment1.
                     getPaymentStatus() : null) ?

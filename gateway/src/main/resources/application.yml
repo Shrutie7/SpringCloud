@@ -23,6 +23,9 @@ spring:
   application:
     name: GATEWAY-SERVICE
 
+  config:
+    import: "optional:configserver:http://localhost:9196"
+
   cloud:
     gateway:
       routes:

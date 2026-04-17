@@ -1,6 +1,7 @@
 package com.shrucode.order_service.common;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 //translate controller APIs into Feign methods.
 @FeignClient(name = "INVENTORY-SERVICE")
 public interface InventoryFeignClient {
-
     @GetMapping("/inventory/{productId}")
     Inventory getInventoryDetails(@PathVariable int productId);
 

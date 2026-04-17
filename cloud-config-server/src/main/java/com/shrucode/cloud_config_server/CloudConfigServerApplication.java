@@ -1,16 +1,19 @@
-package com.shrucode.gateway;
+package com.shrucode.cloud_config_server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.config.server.EnableConfigServer;
 
 @SpringBootApplication
-public class GatewayApplication {
+@EnableConfigServer
+public class CloudConfigServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GatewayApplication.class, args);
+		SpringApplication.run(CloudConfigServerApplication.class, args);
 	}
 
 }
+
 //CONFIG SERVER :
 //purpose of adding a spring cloud config in microservice architecture is storing and serving distributed configuration across multiple applications
 //if u have common prop reqd in each and every microservice rather than hardcode those configuration in each & every microservice keep it in some central place whoever microservice need to access that can get it from that central place

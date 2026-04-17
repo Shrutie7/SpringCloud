@@ -6,14 +6,19 @@ import com.shrucode.inventory_service.common.InventoryStatus;
 import com.shrucode.inventory_service.entity.Inventory;
 import com.shrucode.inventory_service.repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 
 
 public class InventoryService {
     @Autowired
     private InventoryRepository inventoryRepository;
 
-    public Inventory getInventoryDetails(int productId){
-        return inventoryRepository.findByProductId(productId); //findById() searches using primary key (id)
+    public ResponseEntity<Inventory> getInventoryDetails(int productId){
+        Inventory inventory = inventoryRepository.findByProductId(productId);//findById() searches using primary key (id)
+        if (inventory == null) {
+            return ResponseEntity.notFound().build(); // 404
+        }
+        return ResponseEntity.ok(inventory);
     }
 
     public Inventory addInventory(Inventory inventory){

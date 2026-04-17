@@ -6,6 +6,7 @@ import com.shrucode.inventory_service.common.InventoryReduceResponse;
 import com.shrucode.inventory_service.entity.Inventory;
 import com.shrucode.inventory_service.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -18,7 +19,7 @@ public class InventoryController {
     private InventoryService inventoryService;
 
     @GetMapping("{productId}")
-    public Inventory getInventoryDetails(@PathVariable int productId){
+    public ResponseEntity<Inventory> getInventoryDetails(@PathVariable int productId){
         return inventoryService.getInventoryDetails(productId);
     }
 

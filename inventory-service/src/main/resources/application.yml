@@ -22,12 +22,9 @@ spring:
   application:
     name: INVENTORY-SERVICE
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+  config:
+    import: "optional:configserver:http://localhost:9196" #talking to config server applciation this used to be in bootstrap.yml which loads before application.yml new way is this
 
-  instance:
-    hostname: localhost
+  cloud:
+    config:
+      profile: default
