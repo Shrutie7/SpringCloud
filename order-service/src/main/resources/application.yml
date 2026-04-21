@@ -28,3 +28,6 @@ spring:
   cloud:
       config:
         profile: default
+
+  logging:
+    file: C:/Users/ASUS/Desktop/logs/microservice.log

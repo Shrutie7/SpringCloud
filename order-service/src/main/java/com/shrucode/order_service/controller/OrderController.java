@@ -1,6 +1,7 @@
 package com.shrucode.order_service.controller;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.shrucode.order_service.common.TransactionRequest;
 import com.shrucode.order_service.common.TransactionResponse;
 import com.shrucode.order_service.service.OrderService;
@@ -19,7 +20,7 @@ public class OrderController {
 
 
     @PostMapping("/saveorder")
-    public TransactionResponse saveOrder(@RequestBody TransactionRequest transactionRequest){
+    public TransactionResponse saveOrder(@RequestBody TransactionRequest transactionRequest) throws JsonProcessingException {
        return orderService.saveOrder(transactionRequest);
     }
 }

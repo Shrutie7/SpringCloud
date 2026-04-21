@@ -1,9 +1,13 @@
 package com.shrucode.order_service.service;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shrucode.order_service.common.*;
 import com.shrucode.order_service.entity.Order;
 import com.shrucode.order_service.repository.OrderRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -27,9 +31,10 @@ public class OrderService {
 
     @Value("${microservice.payment-service.endpoints.endpoint.uri}")
     private String ENDPOINT_URL;
+    private Logger log = LoggerFactory.getLogger(OrderService.class); // coming from Slf4j
 
 
-    public TransactionResponse saveOrder(TransactionRequest transactionRequest) {
+    public TransactionResponse saveOrder(TransactionRequest transactionRequest) throws JsonProcessingException {
 
         String response = "";
         Order order = transactionRequest.getOrder();
@@ -38,6 +43,7 @@ public class OrderService {
         inventoryReduceRequest.setProductId(order.getProductId());
         inventoryReduceRequest.setQuantity(order.getQuantity());
         InventoryReduceResponse inventoryReduceResponse = inventoryFeignClient.reduceInventory(inventoryReduceRequest);
+        log.info("InventoryService Response: {}",new ObjectMapper().writeValueAsString(inventoryReduceResponse));//to view it in JSON MODE use ObjectMapper().writeValueAsString
         if (inventoryReduceResponse.getStatus()!=null &&InventoryStatus.Success.equals(inventoryReduceResponse.getStatus())){
             Payment payment = transactionRequest.getPayment();
 
@@ -45,12 +51,13 @@ public class OrderService {
             payment.setOrderId(order.getOrderId());
             payment.setAmount(order.getPrice());
 
+            log.info("OrderService Request: {}",new ObjectMapper().writeValueAsString(transactionRequest));//to view it in JSON MODE use ObjectMapper().writeValueAsString
             orderRepository.save(order);
             //rest call(post call to payment api use RestTemplate connect 2 microservice make bean)
             //postForObject --> 3params --> url,request,response type class
 
             Payment payment1 = restTemplate.postForObject(ENDPOINT_URL, payment, Payment.class);
-
+            log.info("PaymentService Response from order service REST CALL : {}",new ObjectMapper().writeValueAsString(payment1));//to view it in JSON MODE use ObjectMapper().writeValueAsString
             response = "success".equals(payment1 != null ? payment1.
                     getPaymentStatus() : null) ?
                        "Payment processed and order completed sucessfully" :
