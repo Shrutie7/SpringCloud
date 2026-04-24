@@ -52,7 +52,7 @@ spring:
         - id: inventory-service
           uri: lb://INVENTORY-SERVICE
           predicates:
-            - Path=/inventory/** #url pattern any path starting with/payment will redirect to payment service if failure send to paymentFallBack which is configured in FallBackController
+            - Path=/inventory/**
           filters:
             - name: CircuitBreaker
               args:

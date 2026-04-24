@@ -29,7 +29,7 @@ public class OrderService {
     private InventoryFeignClient inventoryFeignClient;
 
 
-    @Value("${microservice.payment-service.endpoints.endpoint.uri}")
+    @Value("${microservice.payment-service.endpoints.endpoint.url}")
     private String ENDPOINT_URL;
     private Logger log = LoggerFactory.getLogger(OrderService.class); // coming from Slf4j
 
