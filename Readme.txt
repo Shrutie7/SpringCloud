@@ -272,3 +272,12 @@
 
 //add dependency in spring cloud config server application -> config server , eureka client (register as eureka client)
 
+
+//6.Feign Client
+//at top put @FeignClient(name = "INVENTORY-SERVICE")
+// Feign = same as Controller, but inside interface
+//translate controller APIs into Feign methods.
+// do autowire in service we want to use that other service which we made feign client interface 
+//    @Autowired
+// private InventoryFeignClient inventoryFeignClient;
+
