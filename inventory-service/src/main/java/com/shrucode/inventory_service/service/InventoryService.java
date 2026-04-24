@@ -1,17 +1,24 @@
 package com.shrucode.inventory_service.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shrucode.inventory_service.common.InventoryReduceRequest;
 import com.shrucode.inventory_service.common.InventoryReduceResponse;
 import com.shrucode.inventory_service.common.InventoryStatus;
 import com.shrucode.inventory_service.entity.Inventory;
 import com.shrucode.inventory_service.repository.InventoryRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class InventoryService {
     @Autowired
     private InventoryRepository inventoryRepository;
+    private Logger log = LoggerFactory.getLogger(InventoryService.class); // coming from Slf4j
+
 
     public ResponseEntity<Inventory> getInventoryDetails(int productId){
         Inventory inventory = inventoryRepository.findByProductId(productId);//findById() searches using primary key (id)
@@ -25,7 +32,7 @@ public class InventoryService {
         return inventoryRepository.save(inventory);
     }
 
-    public InventoryReduceResponse reduceInventory(InventoryReduceRequest inventoryReduceRequest){
+    public InventoryReduceResponse reduceInventory(InventoryReduceRequest inventoryReduceRequest) throws JsonProcessingException {
         InventoryReduceResponse inventoryReduceResponse = new InventoryReduceResponse();
 //        Inventory inventory = new Inventory(); // will create a new row if i create a new object of entity we need to update existing row
 
@@ -50,6 +57,8 @@ public class InventoryService {
                 inventoryReduceResponse.setMessage("Insufficient stock");
             }
         }
+        log.info("InventoryService Response: {}",new ObjectMapper().writeValueAsString(inventoryReduceResponse));//to view it in JSON MODE use ObjectMapper().writeValueAsString
+
         return inventoryReduceResponse;
     }
 

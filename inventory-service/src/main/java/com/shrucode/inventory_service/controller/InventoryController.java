@@ -1,6 +1,7 @@
 package com.shrucode.inventory_service.controller;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.shrucode.inventory_service.common.InventoryReduceRequest;
 import com.shrucode.inventory_service.common.InventoryReduceResponse;
 import com.shrucode.inventory_service.entity.Inventory;
@@ -29,7 +30,7 @@ public class InventoryController {
     }
 
     @PutMapping("/reduce")
-    public InventoryReduceResponse reduceInventory(@RequestBody InventoryReduceRequest inventoryReduceRequest){
+    public InventoryReduceResponse reduceInventory(@RequestBody InventoryReduceRequest inventoryReduceRequest) throws JsonProcessingException {
         return inventoryService.reduceInventory(inventoryReduceRequest);
     }
 }
