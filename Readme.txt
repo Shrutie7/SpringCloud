@@ -62,14 +62,14 @@ PUT inventory-index
 //index is now created in ELASTIC SEARCH
 //once index is created then add document in that index using post query
 // --> (POST /inventory-index/default/ this is old syntax )_doc is the document type (types like default are removed).
-//POST inventory-index/_doc
-//{
-//"name"; "event processing",
-//		"instructor": {
-//		"firstname"; "John",
-//		"Lastname": "Doe"
-//		}
-//}
+POST inventory-index/_doc
+{
+"name": "event processing",
+		"instructor": {
+		  "firstName": "John",
+     	"lastName": "Doe"
+		}
+}
 //go to log folder in desktop in microservice u will see the log file all 3 service logs will come in that log file
 
 //now we need to give log file to logstash
