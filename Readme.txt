@@ -50,13 +50,15 @@
 //GET _cat/indices?v        → list indices
 //GET index/_search         → query data
 //go to kibana --> Dev tools -> write query to create index ->
-//PUT inventory-index
-//{
-//"settings": {
-//"number_of_shards": 1,
-//"number_of_replicas": 1
-//}
-//}
+PUT inventory-index
+{
+"settings": {
+  "index":{
+  "number_of_shards": 1,
+  "number_of_replicas": 1
+  }
+}
+}
 //index is now created in ELASTIC SEARCH
 //once index is created then add document in that index using post query
 // --> (POST /inventory-index/default/ this is old syntax )_doc is the document type (types like default are removed).
