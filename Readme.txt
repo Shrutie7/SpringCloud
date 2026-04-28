@@ -162,7 +162,7 @@ POST inventory-index/_doc
 // after input {} and before output {}.
 
 //In Kibana Discover, select the logs index and search using traceld: "‹value>" to see all logs for a single request across microservices.
-
+//SLEUTH IS OUTDATED IN SPRING 3.XX USE MICROMETER TRACING
 
 3. Resilience4j CircuitBreaker
 //Resilience4j is alternative of hysterix which helps to manage fault tolerance in microservice & MORE //features & models of Resilience4j
