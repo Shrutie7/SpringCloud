@@ -133,11 +133,20 @@ POST inventory-index/_doc
 //2. GO TO zipkin.io & we can download from docker /from mvn repo
 //3. run this zipkin server started on 9411 default -› zipkin dashboard
 //4.register 3 microservice in zipkin server
-//5. go to 3 microservice & add dependency pom.xml-> sleuth & zipkin no need to add in gateway/service registery bcoz they r component of microservice
-//6. in each microservice tell where zipkin server is up & running so req chain can be pushed to zipkin // add in yml file of each microservice
+//5. go to 3 microservice & add dependency pom.xml-> micrometer & zipkin no need to add in gateway/service registery bcoz they r component of microservice
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-tracing-bridge-brave</artifactId>
+		</dependency>
 
-//zipkin:
-//base-url: http://localhost:9411
+		<dependency>
+			<groupId>io.zipkin.reporter2</groupId>
+			<artifactId>zipkin-reporter-brave</artifactId>
+		</dependency>
+//6. in each microservice tell where zipkin server is up & running so req chain can be pushed to zipkin // add in yml file of each microservice
+spring:  
+  zipkin:
+    base-url: http://localhost:9411/
 
 //7. restart 3 services & check eureka server 8761 & hit api & in terminal of order service u see 4 components SERVICE NAME, TRACEID, SPAN ID, EXPORT FLAG in payment service terminal
 //8.check 9411 zipkin ui u see the 3 services there click on find traces button we see no of spans & we see req flow & entire history we can get for a service
