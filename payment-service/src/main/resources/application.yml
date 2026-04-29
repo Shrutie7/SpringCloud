@@ -23,9 +23,6 @@ spring:
   application:
       name: PAYMENT-SERVICE
 
-  zipkin:
-    base-url: http://localhost:9411/
-
   config:
     import: "optional:configserver:http://localhost:9196" #talking to config server applciation this used to be in bootstrap.yml which loads before application.yml new way is this
 
@@ -33,7 +30,25 @@ spring:
     config:
       profile: default  #talking to config server applciation
 
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+  endpoints:
+    web:
+      exposure:
+        include: health,info,circuitbreakers,circuitbreakerevents
+
+  endpoint:
+    health:
+      show-details: always
+
 logging:
   file:
     name: C:/Users/ASUS/Desktop/logs/microservice.log
-

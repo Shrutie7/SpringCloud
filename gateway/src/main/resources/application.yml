@@ -28,6 +28,9 @@ spring:
 
   cloud:
     gateway:
+      httpclient:
+        connect-timeout: 3000
+        response-timeout: 15s
       routes:
         - id: order-service # as a list
           uri: lb://ORDER-SERVICE #loadbalancer service name
@@ -99,4 +102,4 @@ resilience4j:
 #         CircuitBreaker fallback
 
   #Circuit breaker at gateway handles external failures,
-  #but for inter-service communication we must also implement circuit breaker at service level.
+  #but for inter-service communication we must also implement circuit breaker at service level. done in payment service

@@ -22,16 +22,69 @@ spring:
   application:
     name: ORDER-SERVICE
 
-  zipkin:
-    base-url: http://localhost:9411/
-
   config:
     import: "optional:configserver:http://localhost:9196" #talking to config server applciation this used to be in bootstrap.yml which loads before application.yml new way is this
 
   cloud:
-      config:
-        profile: default
+    config:
+      profile: default
+
+
+management:
+  tracing:
+    enabled: false # remove this when u want to trace in zipkin
+    sampling:
+      probability: 1.0
+
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+  endpoints:
+    web:
+      exposure:
+        include: health,info,circuitbreakers,circuitbreakerevents
+
+  endpoint:
+    health:
+      show-details: always
 
 logging:
   file:
     name: C:/Users/ASUS/Desktop/logs/microservice.log
+
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      paymentService:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+
+        # If 50% of requests fail, circuit opens
+        failureRateThreshold: 50
+
+        # Minimum calls before calculating failure rate
+        minimumNumberOfCalls: 5
+
+        # Automatically move OPEN -> HALF_OPEN after wait time
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+
+        # Number of trial calls allowed in HALF_OPEN state
+        permittedNumberOfCallsInHalfOpenState: 3
+
+        # Sliding window type: COUNT_BASED or TIME_BASED
+        slidingWindowType: COUNT_BASED
+
+        # Last 10 requests considered
+        slidingWindowSize: 10
+
+  retry:
+    instances:
+      inventoryService:
+        #(max no of attempt from order service to inventory service in each 5s once)
+        maxAttempts: 3
+        waitDuration: 1s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2

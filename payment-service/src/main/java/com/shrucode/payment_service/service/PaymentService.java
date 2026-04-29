@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shrucode.payment_service.entity.Payment;
 import com.shrucode.payment_service.repository.PaymentRepository;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 @Service
 public class PaymentService {
-
     @Autowired
     private PaymentRepository paymentRepository;
     private Logger log = LoggerFactory.getLogger(PaymentService.class); // coming from Slf4j
@@ -27,7 +28,6 @@ public class PaymentService {
         log.info("PaymentServiceRequest: {} ", new ObjectMapper().writeValueAsString(payment));
         return paymentRepository.save(payment);
     }
-
     public String fetchPaymentStatus(){
         //now its random but this api call happens from 3rd party payment gateway(paypal/phonepe/gpay)
         return new Random().nextBoolean()?"success":"failure";
