@@ -15,7 +15,7 @@ public class Payment {
     private String transactionId;
     private int orderId;
     private double amount;
-    private String paymentStatus;
+    private PaymentStatus paymentStatus;
 
     private String message;
 }

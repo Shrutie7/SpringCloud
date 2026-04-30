@@ -5,18 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="747a0623-881b-4be0-8476-70aa46fe7d6f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/common/InventoryRetryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/common/PaymentCircuitBreakerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notification-service/src/main/java/com/shrucode/notification_service/common/NotificationType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notification-service/src/main/java/com/shrucode/notification_service/common/PaymentStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notification-service/src/main/java/com/shrucode/notification_service/controller/NotificationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notification-service/src/main/java/com/shrucode/notification_service/entity/Notification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notification-service/src/main/java/com/shrucode/notification_service/repository/NotificationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notification-service/src/main/java/com/shrucode/notification_service/service/NotificationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notification-service/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/common/PaymentStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/common/NotificationFeignClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/common/NotificationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/common/NotificationType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/common/PaymentStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gateway/src/main/java/com/shrucode/gateway/FallbackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gateway/src/main/java/com/shrucode/gateway/FallbackController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../gateway/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../inventory-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../inventory-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../inventory-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/shrucode/inventory_service/entity/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../inventory-service/src/main/java/com/shrucode/inventory_service/entity/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/shrucode/inventory_service/service/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../inventory-service/src/main/java/com/shrucode/inventory_service/service/InventoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notification-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../notification-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notification-service/src/main/java/com/shrucode/notification_service/NotificationServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../notification-service/src/main/java/com/shrucode/notification_service/NotificationServiceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/common/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/common/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/common/PaymentCircuitBreakerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/common/PaymentCircuitBreakerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/shrucode/order_service/service/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../order-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/PaymentServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/PaymentServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/entity/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/entity/Payment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shrucode/payment_service/service/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +86,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.shrucode.payment_service.common" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="PaymentServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.shrucode.payment_service.PaymentServiceApplication" />

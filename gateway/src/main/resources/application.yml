@@ -61,6 +61,16 @@ spring:
               args:
                 name: inventoryServiceCB
                 fallbackUri: forward:/inventoryFallBack
+
+        - id: notification-service
+          uri: lb://NOTIFICATION-SERVICE
+          predicates:
+            - Path=/notification/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: notificationServiceCB
+                fallbackUri: forward:/notificationFallBack
 eureka:
   client:
     register-with-eureka: true
@@ -92,6 +102,8 @@ resilience4j:
       paymentServiceCB:
         timeoutDuration: 5s
       inventoryServiceCB:
+        timeoutDuration: 5s
+      notificationServiceCB:
         timeoutDuration: 5s
 
 

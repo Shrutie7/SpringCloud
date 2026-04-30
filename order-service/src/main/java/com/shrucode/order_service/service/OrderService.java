@@ -61,10 +61,11 @@ public class OrderService {
 
             Payment payment1 = paymentCircuitBreakerService.callPayment(payment);
             log.info("PaymentService Response from order service REST CALL : {}",new ObjectMapper().writeValueAsString(payment1));//to view it in JSON MODE use ObjectMapper().writeValueAsString
-            response = "success".equals(payment1 != null ? payment1.
+            response = PaymentStatus.SUCCESS.equals(payment1 != null ? payment1.
                     getPaymentStatus() : null) ?
                     "Payment processed and order completed sucessfully" :
                     "Payment failed and order added to cart";
+            assert payment1 != null;
             return new TransactionResponse(order, payment1.getAmount(), response, payment1.getTransactionId());
         }else{
             if(InventoryStatus.Failure.equals(inventoryReduceResponse.getStatus())){

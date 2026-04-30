@@ -35,7 +35,7 @@ public class PaymentCircuitBreakerService {
 
         Payment fallbackPayment = new Payment();
 
-        fallbackPayment.setPaymentStatus("FAILED");
+        fallbackPayment.setPaymentStatus(PaymentStatus.FAILURE);
         fallbackPayment.setTransactionId(null);
         fallbackPayment.setAmount(0);
 

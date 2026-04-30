@@ -23,7 +23,7 @@ spring:
     name: ORDER-SERVICE
 
   config:
-    import: "optional:configserver:http://localhost:9196" #talking to config server applciation this used to be in bootstrap.yml which loads before application.yml new way is this
+    import: "optional:configserver:http://localhost:9196" #talking to config server applciation this used to be in bootstrap.yml which loads before application.yml new way is this now in spring config import
 
   cloud:
     config:

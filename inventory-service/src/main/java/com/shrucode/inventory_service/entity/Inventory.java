@@ -19,6 +19,7 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(unique = true)
     private int productId;
 
     private String productName;

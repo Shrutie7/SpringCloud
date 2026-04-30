@@ -29,7 +29,12 @@ public class InventoryService {
     }
 
     public Inventory addInventory(Inventory inventory){
-        return inventoryRepository.save(inventory);
+        Inventory byProductId = inventoryRepository.findByProductId(inventory.getProductId());
+        if(byProductId !=null){
+             throw new RuntimeException("Product already exists in inventory");
+        }else{
+            return inventoryRepository.save(inventory);
+        }
     }
 
     public InventoryReduceResponse reduceInventory(InventoryReduceRequest inventoryReduceRequest) throws JsonProcessingException {

@@ -1,6 +1,7 @@
 package com.shrucode.payment_service.entity;
 
 
+import com.shrucode.payment_service.common.PaymentStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -22,5 +23,5 @@ private int paymentId;
 private String transactionId;
 private int orderId;
 private double amount;
-private String paymentStatus;
+private PaymentStatus paymentStatus;
 }
