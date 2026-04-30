@@ -285,6 +285,29 @@ spring:
 
 
 //6.Feign Client
+RestTemplate resttemplate = new RestTemplate();
+restTemplate.setHeaders(HttpHeaders);
+restTemplate.getForEntity("url",User.claass);
+
+ISSUE WITH RESTTEMPLATE :
+1. MANUALLY BUILD THE URL 
+2. CONFIGURE HEADERS
+3. HANDLE SERIALIZATION/DESERILAIZATION 
+LOT OF BOILER PLATE CODE / DUPLICATE CODE 
+SKIP ALL THAT ONLY WRITE A INTERFACE WITH COUPLE OF ANNOTATION REST HEAVY LIFTING HANDLED AUTOMATICALLY BY FEIGNCLIENT 
+FEIGNCLIENT = DECALRATIVE REST CLIENT MAKE INTERSERVICE COMMUNICATION CLEAN SIMPLE AND POWERFUL 
+ADD FEIGN CLIENT DEPENDENCY IN UPSTREAM SERVICE
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+IN UPSTREAM SERVICE -> MAKE INTERFACE -> at top put @FeignClient(name = DOWNSTREAM-SERVICE,URL=BASEURL(CAN BE DEFINED IN APPLICATION YML ALSO but u have api gateway) ) add all the api u have in your downstream controller only the method declaration and annotation of api in this interface . can define any method name in feign client interface no need to keep ResponseEntity return the raw object also bcoz its interface all method are public and abstract remove the access modifier also
+spring internally creates proxy of feign client internally uses RestTemplate / HttpTemplate to build the request based on method signature 
+//create a proxy for the downstream service
+//RestTemplate -> build the request 
+//URL, GET(TYPE OF HTTP METHOD), NO(any i/p param), expecting to return all these does bts 
+it does all this 3 steps 
+
 //at top put @FeignClient(name = "INVENTORY-SERVICE")
 // Feign = same as Controller, but inside interface
 //translate controller APIs into Feign methods.
