@@ -308,6 +308,8 @@ spring internally creates proxy of feign client internally uses RestTemplate / H
 //URL, GET(TYPE OF HTTP METHOD), NO(any i/p param), expecting to return all these does bts 
 it does all this 3 steps 
 to enable feign client in the upstream service give @EnableFeignClients in main class below @SpringBootApplication
+Feign works without URL because:
+Feign → uses service name → Eureka resolves → LoadBalancer routes → service called
 
 //at top put @FeignClient(name = "INVENTORY-SERVICE")
 // Feign = same as Controller, but inside interface
