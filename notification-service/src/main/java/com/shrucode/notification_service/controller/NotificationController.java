@@ -18,6 +18,8 @@ public class NotificationController {
 
     @Autowired
     public NotificationRepository notificationRepository;
+
+
     @PostMapping("/payment")
     public Notification sendPaymentNotification(@RequestBody Notification notification){
         return notificationService.sendPaymentNotification(notification);
